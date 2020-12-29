@@ -62,9 +62,19 @@ def myfunc(a:float, *args, **kwargs) -> str:
 
 # R简介
 ## 有了Python为什么需要R
-* 一些统计模型用R使用非常方便,例如特征工程、抽样等
+* 操作方便：例如 dplyr 包当中可以实现迅速的数据探索性分析。
+* 很多统计性常用的包：例如使用多重填充后用，
+GLM+ 样条 +L1 损失构造变量，这种特征构造对于和
+线性模型有关的（例如深度学习）有很大关系。注意
+R 当中不需要考虑模型不收敛问题，解决这个问题用
+C（python 速度过慢）来写大概需要 1000 行（并且还
+没考虑缺失值问题）
+* 非预测性建模问题(__见加餐__)  
 * 常用模块
 ```
 caret -- Classification and Regression Training
 dbplyr -- dbplyr is the database backend for dplyr. It allows you to use remote database tables as if they are in-memory data frames by automatically converting dplyr code into SQL.
 ```
+
+# C/C++ 环境搭建
+VSCode+CMake+Gcc on Ubuntu: https://zhuanlan.zhihu.com/p/157362239
