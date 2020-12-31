@@ -46,11 +46,13 @@ def myfunc(a:float, *args, **kwargs) -> str:
   
   函数式编程中异常处理模式，__作用解决函数式编程中非纯函数的副作用__。一些例子： 
   
-  × [Monad in Python](https://pythoninformer.com/programming-techniques/functional-programming/monads/)
+  * [Monad in Python](https://pythoninformer.com/programming-techniques/functional-programming/monads/)
   
-  × [A Java Example for monad](https://zhuanlan.zhihu.com/p/139239510)
+  * [A Java Example for monad](https://zhuanlan.zhihu.com/p/139239510)
   
-  × [Another Java Example for monad](https://www.jdon.com/idea/java8-monad.html)
+  * [Another Java Example for monad](https://www.jdon.com/idea/java8-monad.html)
+  
+  * [图解monad] https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
   
 * 装饰器decorator
 
