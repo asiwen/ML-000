@@ -57,3 +57,29 @@ module = Extension('hello',
 __注意__: .pyx文件头部设置的 language 优先级高于setup.py中的设置（当然只针对本模块而言）。
   
 * 大项目中建议优先选择C++, 得益于STL可以直接在Cython中使用。
+
+### Cython使用建议
+* 注意明确指定类型，特别是用到数组等容器是
+* Python中分配大对象，传入C/C++中。临时对象可以在C/C++中分配然后释放。
+* numpy在cython中使用要注意行优先还是列优先。
+  C/C++中数组默认是row-major, fortran中采用 column-major
+  ```python
+  cdef np.ndarray[double, ndim=2, mode='fortran'] arg = np.asfortranarray(matrix, dtype=np.float64)
+  ```
+* 采用OpenMP或Eigen 这里C/C++库。
+
+### OpenMP
+* 只支持C, 不支持C++，要用C++可以使用[oneTBB](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onetbb.html).
+* 建议使用Intel编译器。oneTBB+Denpendency Graph + Eigen:Map。编译十分痛苦。
+* cython中使用OpenMP，可以使用prange.
+* 注意要关闭 GIL,即  nogil=True
+
+### Vtune安装
+VTune作为intel 的[oneapi](https://software.intel.com/content/www/us/en/develop/articles/installing-intel-oneapi-toolkits-via-apt.html)
+一个工具包。
+配置好源后，可以用如下命令安装
+```bash
+sudo apt install intel-basekit
+# 卸载
+# sudo -E apt autoremove intel-hpckit intel-basekit
+```
