@@ -8,7 +8,10 @@
 ```bash
 python -m profile myscript.py
 ```
-* Line Profiler (没有特别好的)
+* Line Profiler 
+* __几个参考资料__
+  * [Profile code in Jupyter](https://mortada.net/easily-profile-python-code-in-jupyter.html)
+  * [Python的7种性能测试工具](https://blog.csdn.net/xiemanr/article/details/72763234)
 
 ## Cython
 对性能要求高的代码建议采用cython来写。
@@ -83,3 +86,4 @@ sudo apt install intel-basekit
 # 卸载
 # sudo -E apt autoremove intel-hpckit intel-basekit
 ```
+[docs & examples](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler.html)
