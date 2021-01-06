@@ -71,6 +71,39 @@ __注意__: .pyx文件头部设置的 language 优先级高于setup.py中的设�
   ```
 * 采用OpenMP或Eigen 这里C/C++库。
 
+#### 示例
+```python
+%%cython
+import numpy as np
+cimport numpy as cnp
+from collections import defaultdict
+
+def default_value():
+    return 0
+
+cpdef target_mean_v5(cnp.ndarray[long] x, cnp.ndarray[double] y, cnp.ndarray[double] result):
+    n = x.shape[0]
+    cdef double sum_dict[10]
+    cdef long cnt_dict[10]
+    
+    cdef double total = 0
+    cdef long cnt = 0
+    
+    for i in range(n):
+        xv, yv = x[i], y[i]
+        sum_dict[xv] += yv
+        cnt_dict[xv] +=1
+        total += yv
+        cnt +=1
+        
+    total_mean = total / cnt
+    for i in range(n):
+        xv, yv = x[i], y[i]
+        c = cnt_dict[xv]
+        result[i] = total_mean if c == 1 else (sum_dict[xv] - yv)/(c-1)
+    return result
+```
+
 ### OpenMP
 * 只支持C, 不支持C++，要用C++可以使用[oneTBB](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onetbb.html).
 * 建议使用Intel编译器。oneTBB+Denpendency Graph + Eigen:Map。编译十分痛苦。
@@ -87,3 +120,4 @@ sudo apt install intel-basekit
 # sudo -E apt autoremove intel-hpckit intel-basekit
 ```
 [docs & examples](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler.html)
+
