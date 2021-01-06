@@ -9,7 +9,7 @@
 python -m profile myscript.py
 ```
 * Line Profiler 
-* __几个参考资料__
+  * Line Profiler只能分析纯python代码
   * [Profile code in Jupyter](https://mortada.net/easily-profile-python-code-in-jupyter.html)
   * [Python的7种性能测试工具](https://blog.csdn.net/xiemanr/article/details/72763234)
 
