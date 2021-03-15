@@ -19,6 +19,11 @@
 
 详细的作业提交流程可以查阅：https://shimo.im/docs/m5rtM8K8rNsjw5jk/ 
 
+```bash
+#学号:G20200616010153
+#班级:机器学习3班
+#作业链接:https://github.com/asiwen/ML-000/blob/main/Week07/props_mining.md
+```
 
 ## 注意事项
 
